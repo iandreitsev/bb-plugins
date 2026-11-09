@@ -1,0 +1,41 @@
+{
+  "name": "bb-plugin-codex-sidebar",
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "bb": ">=0.46",
+    "bbPluginSdk": ">=0.6.49"
+  },
+  "bb": {
+    "name": "Codex Sidebar",
+    "description": "Native BB thread rows grouped by Priority and date, with nested children and a switch to the standard list.",
+    "branding": {
+      "icon": "ListTree"
+    },
+    "server": "./server.ts",
+    "app": "./app.tsx"
+  },
+  "dependencies": {
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@get-bb/plugin-sdk": "0.6.49",
+    "@testing-library/react": "^16.3.3",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "better-sqlite3": "^12.0.0",
+    "cron-parser": "^5.5.0",
+    "hono": "^4.11.9",
+    "jsdom": "^29.1.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "^5.7.0"
+  },
+  "scripts": {
+    "test": "node tests/backend.mjs && node tests/header.cjs && node tests/sidebar.cjs && node tests/native-limit.cjs && node tests/date.cjs",
+    "typecheck": "tsc -p .",
+    "check:upstream": "node scripts/check-upstream.mjs"
+  }
+}

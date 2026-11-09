@@ -1,0 +1,9 @@
+{
+  "name": "bb-plugins",
+  "private": true,
+  "scripts": {
+    "test": "npm --prefix quote-reply test && npm --prefix mobile test && npm --prefix codex-sidebar test && npm --prefix code-block-runner test",
+    "check": "npm --prefix quote-reply run check && npm --prefix mobile run typecheck && npm --prefix codex-sidebar run typecheck && npm --prefix code-block-runner run typecheck",
+    "build": "bb plugin build ./quote-reply && bb plugin build ./mobile && bb plugin build ./codex-sidebar && bb plugin build ./code-block-runner"
+  }
+}

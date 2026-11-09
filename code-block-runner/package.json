@@ -1,0 +1,40 @@
+{
+  "name": "bb-plugin-code-block-runner",
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "bb": ">=0.48",
+    "bbPluginSdk": ">=0.6.104"
+  },
+  "bb": {
+    "name": "Code Block Runner",
+    "description": "Run shell blocks with a play button, show their result inline, and notify the originating agent.",
+    "branding": {
+      "icon": "Terminal"
+    },
+    "server": "./server.ts",
+    "app": "./app.tsx"
+  },
+  "dependencies": {
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@get-bb/plugin-sdk": "0.6.104",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "better-sqlite3": "^12.0.0",
+    "cron-parser": "^5.5.0",
+    "hono": "^4.11.9",
+    "typescript": "^5.7.0",
+    "jsdom": "^29.1.1",
+    "@testing-library/react": "^16.3.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "scripts": {
+    "test": "node tests/backend.mjs && node tests/frontend.cjs",
+    "typecheck": "tsc -p ."
+  }
+}

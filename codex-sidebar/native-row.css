@@ -1,0 +1,81 @@
+/* Geometry follows BB thread-list's sidebar-row-classes and coarse-pointer-sizing. */
+[data-codex-native-row] {
+  position:relative; display:flex; width:100%; min-width:0; align-items:center;
+  gap:8px; border-radius:6px; padding-right:0; height:var(--bb-sidebar-row-height,28px);
+  font-size:var(--text-sm,14px); color:var(--sidebar-foreground); cursor:pointer;
+}
+[data-codex-native-row]:hover, [data-codex-native-row][data-active],
+[data-codex-native-row][data-menu-open] { background:var(--sidebar-accent); color:var(--sidebar-accent-foreground); }
+.cs-content { display:flex; min-width:0; flex:1; align-items:center; align-self:stretch; gap:6px; }
+.cs-content[data-has-children] .cs-row-link { flex:0 1 auto; }
+.cs-row-link { display:flex; align-items:center; align-self:stretch; gap:6px;
+  min-width:0; flex:1; border-radius:6px; outline:none; color:inherit; text-decoration:none; }
+.cs-row-title { min-width:0; flex:0 1 auto; overflow:hidden; white-space:nowrap; }
+.cs-title-text { display:block; width:max-content; }
+.cs-row-title[data-overflow] { mask-image:linear-gradient(to right,#000 calc(100% - 18px),transparent); }
+.cs-row-project { flex:0 0 auto; max-width:33%; min-width:0; overflow:hidden;
+  white-space:nowrap; text-overflow:ellipsis; color:var(--subtle-foreground); }
+/* Reserve room for the native quick action without covering the project label. */
+[data-codex-native-row]:hover .cs-row-link,
+[data-codex-native-row]:focus-within .cs-row-link,
+[data-codex-native-row][data-menu-open] .cs-row-link { padding-right:30px; }
+.cs-row-link:focus-visible { outline:1px solid var(--sidebar-ring); outline-offset:-1px; }
+.cs-disclosure { display:inline-flex; align-items:center; justify-content:center; flex:0 0 20px;
+  width:20px; height:20px; padding:0; margin:0; border:0; border-radius:6px;
+  background:transparent; color:var(--subtle-foreground); cursor:pointer; outline:none; }
+.cs-disclosure[aria-expanded=true] svg { transform:rotate(90deg); }
+.cs-disclosure svg { transition:transform 150ms; }
+.cs-disclosure:hover, .cs-action:hover { background:var(--state-hover); color:var(--muted-foreground); }
+.cs-disclosure:focus-visible, .cs-action:focus-visible { outline:1px solid var(--sidebar-ring); outline-offset:-1px; }
+.cs-trailing { position:relative; display:flex; align-items:center; justify-content:center; flex:0 0 28px; width:28px; height:28px; }
+.cs-status { display:flex; align-items:center; justify-content:center; width:16px; height:16px; }
+.cs-row-actions { position:absolute; inset:0; display:flex; align-items:center; justify-content:flex-end;
+  gap:2px; opacity:0; pointer-events:none; }
+.cs-action { display:flex; align-items:center; justify-content:center; flex:0 0 28px;
+  height:28px; width:28px; border:0; padding:0; margin:0; border-radius:6px;
+  background:transparent; color:var(--subtle-foreground); cursor:pointer; outline:none; }
+.cs-action:disabled { opacity:.4; cursor:default; }
+/* Keep the native far-right status slot; hover actions replace it, never displace it. */
+[data-codex-native-row]:hover .cs-row-actions,
+[data-codex-native-row]:focus-within .cs-row-actions,
+[data-codex-native-row][data-menu-open] .cs-row-actions { opacity:1; pointer-events:auto; }
+[data-codex-native-row]:hover .cs-status,
+[data-codex-native-row]:focus-within .cs-status,
+[data-codex-native-row][data-menu-open] .cs-status { opacity:0; }
+.cs-quick-action { position:absolute; right:30px; background:var(--sidebar-accent); }
+[data-codex-native-row]:has(.cs-disclosure) .cs-quick-action { right:60px; }
+
+.cs-shortcut { padding:2px 6px; border-radius:3px; font-size:12px; background:var(--state-hover); }
+@media (hover:none) {
+  .cs-row-actions { display:none; }
+  [data-codex-native-row] .cs-status { opacity:1; }
+}
+@media (max-width:767px) and (pointer:coarse) {
+  [data-codex-native-row] { height:var(--bb-sidebar-row-height-coarse,36px); }
+}
+
+[data-order-id] { user-select:none; }
+/* Pointer-only overlays never intercept hit testing or host split dragging. */
+[data-order-dragging] > [data-codex-native-row],
+[data-order-dragging] > ul { opacity:.3; }
+.cs-drag-preview {
+  position:fixed; z-index:2147483646; pointer-events:none;
+  display:flex; align-items:center; gap:6px; padding:5px 9px;
+  max-width:min(260px, calc(100vw - 8px)); border-radius:10px;
+  background:var(--popover, #f9f9f9); color:var(--popover-foreground, #373737);
+  border:1px solid var(--border, #e6e6e6);
+  box-shadow:0 3px 12px #00000014; opacity:.92;
+  font-family:var(--font-sans); font-size:var(--text-sm,14px); line-height:20px;
+}
+.cs-drag-preview[hidden] { display:none; }
+.cs-drag-preview > span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.cs-drag-preview > svg { flex:none; width:16px; height:16px; }
+.cs-drop-marker {
+  position:fixed; z-index:2147483645; height:2px; transform:translateY(-1px);
+  background:#7775ef; pointer-events:none;
+}
+.cs-drop-marker::before {
+  content:""; position:absolute; left:-3px; top:-2px;
+  width:6px; height:6px; box-sizing:border-box; border:1.5px solid #7775ef;
+  border-radius:50%; background:var(--sidebar, #f9f9f9);
+}

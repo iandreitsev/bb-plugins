@@ -1,0 +1,37 @@
+{
+  "name": "bb-plugin-mobile",
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "bb": ">=0.48",
+    "bbPluginSdk": ">=0.6.104"
+  },
+  "bb": {
+    "name": "BB Mobile",
+    "description": "Mobile improvements for text selection, quoting, and composer focus.",
+    "branding": {
+      "icon": "Smartphone"
+    },
+    "server": "./server.ts",
+    "app": "./app.tsx",
+    "skills": []
+  },
+  "devDependencies": {
+    "@get-bb/plugin-sdk": "0.6.104",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.3.0",
+    "@types/turndown": "^5.0.6",
+    "jsdom": "^29.1.1",
+    "react": "^19.3.1",
+    "typescript": "^5.7.0"
+  },
+  "scripts": {
+    "test": "node tests/mobile.cjs && node tests/saved-quote.cjs",
+    "typecheck": "tsc -p .",
+    "build": "bb plugin build"
+  },
+  "dependencies": {
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2"
+  }
+}

@@ -1,0 +1,12 @@
+.cbr-block{position:relative}
+.cbr-play{position:absolute;top:6px;right:58px;display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;border:0;border-radius:4px;background:transparent;color:var(--muted-foreground);cursor:pointer}
+.cbr-play:hover{background:var(--state-hover);color:var(--foreground)}
+.cbr-play:focus-visible{outline:1px solid var(--ring)}
+.cbr-play:disabled{opacity:.4;cursor:default}
+.cbr-result{margin-top:5px;padding:8px 12px;border:1px solid var(--border);border-radius:7px;font-size:12px;color:var(--muted-foreground)}
+.cbr-status{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px}
+.cbr-status button{font:inherit;border:0;padding:0;background:transparent;color:var(--foreground);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.cbr-location{margin-top:4px;font-family:monospace;font-size:11px;overflow-wrap:anywhere}
+.cbr-error{font-size:12px;color:var(--destructive);padding:4px 0;margin:0}
+.cbr-result details{margin-top:5px}.cbr-result summary{cursor:pointer}
+.cbr-result pre{max-height:260px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.5 monospace;margin:6px 0 0}

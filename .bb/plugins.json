@@ -1,0 +1,23 @@
+{
+  "$schema": "https://getbb.app/schemas/plugins.schema.json",
+  "schemaVersion": 1,
+  "name": "iandreitsev-bb-plugins",
+  "plugins": [
+    {
+      "name": "quote-reply",
+      "source": "./quote-reply"
+    },
+    {
+      "name": "mobile",
+      "source": "./mobile"
+    },
+    {
+      "name": "codex-sidebar",
+      "source": "./codex-sidebar"
+    },
+    {
+      "name": "code-block-runner",
+      "source": "./code-block-runner"
+    }
+  ]
+}
